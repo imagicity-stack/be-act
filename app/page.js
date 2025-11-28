@@ -15,32 +15,81 @@ export default function HomePage() {
   const [openProgram, setOpenProgram] = useState(null);
 
   return (
-    <div className="gradient-blob">
-      <section className="max-w-6xl mx-auto px-4 pt-16 pb-24 grid md:grid-cols-2 gap-10 items-center">
-        <div className="space-y-6">
-          <div className="inline-flex items-center space-x-3 bg-be-yellow/30 text-act-green px-3 py-2 rounded-full font-semibold">
-            <span className="w-2 h-2 rounded-full bg-act-green" />
+    <div className="gradient-blob relative overflow-hidden">
+      <motion.div
+        className="absolute -right-24 -top-10 w-64 h-64 rounded-full funky-fade blur-3xl opacity-70 animate-wiggle-slow"
+        aria-hidden
+      />
+      <motion.div
+        className="absolute -left-10 bottom-0 w-52 h-52 rounded-[40%] bg-be-yellow/50 blur-3xl animate-pulse-glow"
+        aria-hidden
+      />
+
+      <section className="relative max-w-6xl mx-auto px-4 pt-16 pb-24 grid md:grid-cols-2 gap-10 items-center">
+        <div className="space-y-7">
+          <div className="inline-flex items-center space-x-3 bg-be-yellow/40 text-act-green px-3 py-2 rounded-full font-semibold shadow-card">
+            <span className="w-2 h-2 rounded-full bg-act-green animate-ping" />
             <span>Modern, action-first NGO</span>
           </div>
-          <h1 className="font-heading text-4xl md:text-5xl text-act-green leading-tight">
-            Building Action.
-            <br />
-            Building Impact.
-          </h1>
-          <p className="text-lg text-act-green/80 max-w-xl">
+          <div className="space-y-2">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="uppercase tracking-[0.25em] text-act-green/70 text-sm"
+            >
+              Building Action. Building Impact.
+            </motion.p>
+            <h1 className="font-heading text-4xl md:text-5xl text-act-green leading-tight">
+              <motion.span
+                initial={{ y: 24, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ type: 'spring', stiffness: 140, damping: 12 }}
+                className="inline-block rotate-[-2deg] bg-be-yellow/70 px-2 rounded-2xl"
+              >
+                Building Action.
+              </motion.span>
+              <br />
+              <motion.span
+                initial={{ y: 24, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.08, type: 'spring', stiffness: 140, damping: 12 }}
+                className="inline-flex items-center gap-2"
+              >
+                Building Impact
+                <motion.span
+                  className="w-10 h-10 rounded-full bg-act-green text-cream flex items-center justify-center shadow-card"
+                  animate={{ rotate: [0, 8, -6, 0], scale: [1, 1.1, 0.95, 1] }}
+                  transition={{ repeat: Infinity, duration: 2.6, ease: 'easeInOut' }}
+                >
+                  ✺
+                </motion.span>
+              </motion.span>
+            </h1>
+          </div>
+          <p className="text-lg text-act-green/80 max-w-xl leading-relaxed">
             A movement that inspires people to act, create, and contribute. We power playful education, bold women-led ideas,
             community cleanliness drives, and skill journeys for youth.
           </p>
-          <div className="flex space-x-4 items-center">
+          <div className="flex space-x-4 items-center flex-wrap gap-3">
             <CTAButton href="/get-involved">Join the Movement</CTAButton>
             <CTAButton href="#programs" variant="secondary">
               Explore Programs
             </CTAButton>
+            <motion.div
+              className="flex items-center gap-2 px-3 py-2 rounded-full bg-white shadow-card"
+              animate={{ rotate: [0, 3, -3, 0] }}
+              transition={{ repeat: Infinity, duration: 4 }}
+            >
+              <span className="w-2 h-2 rounded-full bg-act-green animate-pulse" />
+              <span className="text-sm font-semibold">Micro-acts daily</span>
+            </motion.div>
           </div>
           <div className="flex space-x-6 pt-4">
-            <div>
+            <div className="relative">
               <p className="text-sm text-act-green/60">Volunteers activated</p>
               <p className="text-3xl font-heading text-act-green">5k+</p>
+              <span className="absolute -left-3 -bottom-3 w-14 h-14 rounded-full bg-be-yellow/40 blur-md animate-pulse-glow" />
             </div>
             <div>
               <p className="text-sm text-act-green/60">Communities served</p>
@@ -50,7 +99,7 @@ export default function HomePage() {
         </div>
         <div className="relative">
           <motion.div
-            className="w-full h-[420px] bg-white rounded-[32px] shadow-2xl p-8 flex flex-col justify-between"
+            className="w-full h-[420px] bg-white rounded-[32px] shadow-2xl p-8 flex flex-col justify-between border border-act-green/10"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -58,7 +107,10 @@ export default function HomePage() {
             <div className="flex justify-between items-start">
               <div className="space-y-3">
                 <p className="uppercase text-xs tracking-widest text-act-green/60">Action Dashboard</p>
-                <h3 className="font-heading text-2xl text-act-green">People making moves</h3>
+                <h3 className="font-heading text-2xl text-act-green flex items-center gap-2">
+                  People making moves
+                  <span className="w-2 h-2 rounded-full bg-be-yellow animate-ping" />
+                </h3>
               </div>
               <Mascot />
             </div>
@@ -68,18 +120,22 @@ export default function HomePage() {
                 { label: 'Women Circles', value: '18', accent: 'bg-act-green text-cream' },
                 { label: 'Clean-up Sprints', value: '56', accent: 'bg-be-yellow' },
                 { label: 'Skill Studios', value: '24', accent: 'bg-act-green text-cream' }
-              ].map((stat) => (
-                <div
+              ].map((stat, index) => (
+                <motion.div
                   key={stat.label}
                   className={`rounded-3xl px-4 py-5 shadow-card ${stat.accent} bg-opacity-90 text-act-green`}
+                  whileHover={{ y: -6, rotate: index % 2 === 0 ? 1 : -1 }}
+                  transition={{ type: 'spring', stiffness: 220, damping: 16 }}
                 >
                   <p className="text-sm text-act-green/80">{stat.label}</p>
                   <p className="text-3xl font-heading">{stat.value}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
             <div className="flex items-center space-x-3 text-act-green/70">
-              <div className="w-10 h-10 rounded-full bg-be-yellow flex items-center justify-center font-bold">↗</div>
+              <div className="w-10 h-10 rounded-full bg-be-yellow flex items-center justify-center font-bold shadow-card animate-wiggle-slow">
+                ↗
+              </div>
               <p className="text-sm">Elements rise, bounce, and stretch—just like our logo energy.</p>
             </div>
           </motion.div>
@@ -98,7 +154,7 @@ export default function HomePage() {
 
       <div className="flex justify-center pb-10">
         <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 1.8 }} className="text-center">
-          <div className="w-10 h-10 rounded-full bg-be-yellow/80 flex items-center justify-center text-act-green font-bold">
+          <div className="w-10 h-10 rounded-full bg-be-yellow/80 flex items-center justify-center text-act-green font-bold shadow-card">
             ↓
           </div>
           <p className="text-act-green/60 text-sm mt-2">Scroll for impact</p>
