@@ -72,7 +72,7 @@ export default function HomePage() {
             community cleanliness drives, and skill journeys for youth.
           </p>
           <div className="flex space-x-4 items-center flex-wrap gap-3">
-            <CTAButton href="/get-involved">Join the Movement</CTAButton>
+            <CTAButton href="/involve">INVOLVE</CTAButton>
             <CTAButton href="#programs" variant="secondary">
               Explore Programs
             </CTAButton>

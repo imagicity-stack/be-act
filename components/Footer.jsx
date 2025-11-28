@@ -29,7 +29,7 @@ export default function Footer() {
           <div className="space-y-2 text-cream/80">
             <Link href="/about">About Us</Link>
             <Link href="/programs" className="block">Programs</Link>
-            <Link href="/get-involved" className="block">Get Involved</Link>
+            <Link href="/involve" className="block">Involve</Link>
             <Link href="/gallery" className="block">Gallery</Link>
             <Link href="/contact" className="block">Contact</Link>
           </div>
