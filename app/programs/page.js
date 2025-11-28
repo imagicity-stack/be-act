@@ -12,7 +12,10 @@ export default function ProgramsPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-16">
-      <SectionHeader title="Programs that invite action" subtitle="Hover, lift, and click to dive deeper." />
+      <SectionHeader
+        title="Education-first programs"
+        subtitle="Learning and skill-building lead the way, with other initiatives supporting every learner and family."
+      />
       <div className="grid md:grid-cols-2 gap-6 mb-12">
         {programs.map((program) => (
           <ProgramCard key={program.title} program={program} onOpen={setOpenProgram} />

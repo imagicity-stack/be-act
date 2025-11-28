@@ -29,7 +29,7 @@ export default function HomePage() {
         <div className="space-y-7">
           <div className="inline-flex items-center space-x-3 bg-be-yellow/40 text-act-green px-3 py-2 rounded-full font-semibold shadow-card">
             <span className="w-2 h-2 rounded-full bg-act-green animate-ping" />
-            <span>Modern, action-first NGO</span>
+            <span>Education-led, action-first NGO</span>
           </div>
           <div className="space-y-2">
             <motion.p
@@ -47,7 +47,7 @@ export default function HomePage() {
                 transition={{ type: 'spring', stiffness: 140, damping: 12 }}
                 className="inline-block rotate-[-2deg] bg-be-yellow/70 px-2 rounded-2xl"
               >
-                Building Action.
+                Building Action through Education.
               </motion.span>
               <br />
               <motion.span
@@ -68,8 +68,8 @@ export default function HomePage() {
             </h1>
           </div>
           <p className="text-lg text-act-green/80 max-w-xl leading-relaxed">
-            A movement that inspires people to act, create, and contribute. We power playful education, bold women-led ideas,
-            community cleanliness drives, and skill journeys for youth.
+            A movement that inspires people to act, create, and contribute. We lead with playful education and skill journeys
+            for children and youth, while also backing women-led ideas, clean community spaces, and rapid relief when needed.
           </p>
           <div className="flex space-x-4 items-center flex-wrap gap-3">
             <CTAButton href="/involve">INVOLVE</CTAButton>
@@ -162,7 +162,7 @@ export default function HomePage() {
       </div>
 
       <section id="programs" className="max-w-6xl mx-auto px-4 py-16">
-        <SectionHeader title="Programs & Initiatives" subtitle="Every card opens a world of action." />
+        <SectionHeader title="Education-first programs" subtitle="Skills and learning at the core, with other supports alongside." />
         <div className="grid md:grid-cols-2 gap-6">
           {programs.map((program) => (
             <ProgramCard key={program.title} program={program} onOpen={setOpenProgram} />
@@ -175,11 +175,12 @@ export default function HomePage() {
           <div className="space-y-4">
             <SectionHeader
               title="Why BE ACT exists"
-              subtitle="We spark micro-actions that add up to movements—education, equity, and cleaner communities."
+              subtitle="We spark micro-actions that add up to movements—education first, equity and cleaner communities as strong enablers."
             />
             <p className="text-act-green/80 leading-relaxed">
               From the playful dot above the “e” to bold greens of “act”, every detail of our brand reminds people to move. We
-              build joyful spaces where learning, leadership, and local pride feel easy to join.
+              build joyful learning spaces, open skill ladders for youth, and keep complementary programs ready so every learner
+              is supported at home, in class, and across their neighborhood.
             </p>
             <div className="flex space-x-3">
               <CTAButton href="/about">Meet the story</CTAButton>

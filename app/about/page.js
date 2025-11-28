@@ -7,8 +7,8 @@ import CTAButton from '../../components/CTAButton';
 
 const principles = [
   {
-    title: 'Multi-sector focus',
-    text: 'We address challenges across education, health, livelihood, and community resilience to ensure holistic development.'
+    title: 'Education at the center',
+    text: 'Learning outcomes and skill pathways anchor every project, while health, safety, and environment efforts reinforce them.'
   },
   {
     title: 'Impact-first approach',
@@ -16,7 +16,7 @@ const principles = [
   },
   {
     title: 'Strong partnerships',
-    text: 'Schools, healthcare institutions, local authorities, and grassroots organisations expand our reach and depth.'
+    text: 'Schools, training partners, healthcare institutions, and grassroots organisations expand our reach and depth.'
   },
   {
     title: 'Transparency and accountability',
@@ -34,32 +34,32 @@ const workAreas = [
     details: 'School development, learning resources, teacher training, and student support initiatives.'
   },
   {
-    title: 'Healthcare',
-    details: 'Medical camps, awareness drives, essential aid, and sanitation projects.'
-  },
-  {
     title: 'Livelihood & Skills',
     details: 'Entrepreneurship support, youth training, and vocational skill programs.'
-  },
-  {
-    title: 'Women Empowerment',
-    details: 'Safety programs, financial literacy, capacity building, and self-help initiatives.'
-  },
-  {
-    title: 'Rural Development',
-    details: 'Water access, basic infrastructure, community support, and hygiene initiatives.'
-  },
-  {
-    title: 'Environment',
-    details: 'Plantation drives, waste management, and sustainability initiatives.'
   },
   {
     title: 'Digital Literacy',
     details: 'Access to devices, digital training, and e-learning support.'
   },
   {
+    title: 'Women Empowerment',
+    details: 'Safety programs, financial literacy, capacity building, and self-help initiatives that strengthen learning gains.'
+  },
+  {
+    title: 'Healthcare',
+    details: 'Medical camps, awareness drives, essential aid, and sanitation projects that keep students and families healthy.'
+  },
+  {
+    title: 'Environment',
+    details: 'Plantation drives, waste management, and sustainability initiatives that make schools and neighborhoods thrive.'
+  },
+  {
+    title: 'Rural Development',
+    details: 'Water access, basic infrastructure, community support, and hygiene initiatives that protect learning environments.'
+  },
+  {
     title: 'Relief & Rehabilitation',
-    details: 'Rapid response during crises, food distribution, and rehabilitation support.'
+    details: 'Rapid response during crises, food distribution, and rehabilitation support to keep education journeys steady.'
   }
 ];
 
@@ -77,17 +77,17 @@ export default function AboutPage() {
         <div className="space-y-6">
           <SectionHeader
             title="About Us – BE ACT Foundation"
-            subtitle="The social impact arm of Bhagwati Educational and Charitable Trust — created to turn real community challenges into measurable action."
+            subtitle="The social impact arm of Bhagwati Educational and Charitable Trust — built to advance education and skills, with supporting programs that keep communities resilient."
           />
           <div className="bg-white rounded-3xl p-6 shadow-card border border-act-green/10 space-y-4 text-act-green/80 leading-relaxed">
             <p>
-              BE ACT Foundation exists to deliver meaningful change across multiple sectors because society’s needs are diverse and our responsibility is to respond to all of them.
+              BE ACT Foundation leads with education and skill-building because that is where long-term change begins. We still respond to diverse needs across health, environment, and safety so that learning pathways are never interrupted.
             </p>
             <p>
-              We operate with a proactive, solution-driven approach. When a gap is identified, we step in. When a system needs support, we strengthen it. When a community requires long-term development, we commit to building it.
+              We operate with a proactive, solution-driven approach. When a gap in learning or livelihoods is identified, we step in. When a system needs support, we strengthen it. When a community requires long-term development, we commit to building it.
             </p>
             <p>
-              Every initiative is planned with strategy, executed with integrity, and evaluated for impact so that uplifted individuals, supported families, and empowered communities can become resilient and self-sufficient.
+              Every initiative is planned with strategy, executed with integrity, and evaluated for impact so that uplifted learners, supported families, and empowered communities can become resilient and self-sufficient.
             </p>
           </div>
           <CTAButton href="/contact">Partner with us</CTAButton>
@@ -102,7 +102,7 @@ export default function AboutPage() {
           <div className="space-y-3">
             <h3 className="font-heading text-2xl">Our Approach</h3>
             <p className="leading-relaxed">
-              Grounded in transparency, data-driven planning, and on-ground execution. We believe change must be sustainable, inclusive, and rooted in dignity. BE ACT Foundation is not ceremonial; it is a working institution dedicated to measurable progress and long-term development.
+              Grounded in transparency, data-driven planning, and on-ground execution. We believe change must be sustainable, inclusive, and rooted in dignity. BE ACT Foundation is not ceremonial; it is a working institution dedicated to measurable progress in education, skills, and the support systems that protect them.
             </p>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default function AboutPage() {
         >
           <h3 className="font-heading text-3xl text-act-green">Our Mission</h3>
           <p className="text-act-green/80 leading-relaxed">
-            To identify critical gaps in society and deploy sustainable, scalable solutions that improve quality of life across education, health, livelihood, and community development.
+            To identify critical gaps in society and deploy sustainable, scalable solutions that keep education and skills advancing while health, livelihood, and community programs reinforce every learner’s journey.
           </p>
         </motion.div>
       </div>
