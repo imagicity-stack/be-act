@@ -3,69 +3,14 @@
 import { useMemo, useState } from 'react';
 import SectionHeader from '../../components/SectionHeader';
 import CTAButton from '../../components/CTAButton';
+import { programs } from '../../lib/content';
 
-const sectors = [
-  {
-    id: 'education',
-    name: 'Education & Literacy',
-    summary: 'Unlock classrooms with books, mentorship, and inclusive digital learning tools.',
-    packages: [
-      { amount: 10, purpose: 'Printables for early learners and phonics sheets.' },
-      { amount: 50, purpose: 'Stationery kits for two students for a month.' },
-      { amount: 100, purpose: 'Storybooks and science kits for a learning circle.' },
-      { amount: 200, purpose: 'Weekend bridge classes for struggling readers.' },
-      { amount: 500, purpose: 'Digital learning hours with curated content.' },
-      { amount: 1000, purpose: 'Scholar support for exam prep and mentoring.' },
-      { amount: 5000, purpose: 'Mini library and teacher training grant.' },
-      { amount: 10000, purpose: 'Full classroom upgrade with smart aids.' }
-    ]
-  },
-  {
-    id: 'health',
-    name: 'Health & Nutrition',
-    summary: 'Keep families healthy with screenings, nutrition, and urgent relief.',
-    packages: [
-      { amount: 10, purpose: 'ORS and basic hygiene sachets for a child.' },
-      { amount: 50, purpose: 'Nutritious snack packs for an entire class.' },
-      { amount: 100, purpose: 'Anaemia screening strips for adolescent girls.' },
-      { amount: 200, purpose: 'Health awareness huddles led by nurses.' },
-      { amount: 500, purpose: 'Emergency doctor consults for two families.' },
-      { amount: 1000, purpose: 'Nutrition hampers with grains and proteins.' },
-      { amount: 5000, purpose: 'Medical camp with diagnostics and counselling.' },
-      { amount: 10000, purpose: 'Critical care support fund for emergencies.' }
-    ]
-  },
-  {
-    id: 'women',
-    name: 'Women Empowerment',
-    summary: 'Skill, safety, and financial dignity for women-led households.',
-    packages: [
-      { amount: 10, purpose: 'Safety cards and helpline awareness materials.' },
-      { amount: 50, purpose: 'Seed capital for a self-help group savings pot.' },
-      { amount: 100, purpose: 'Workshop on digital literacy and online safety.' },
-      { amount: 200, purpose: 'Confidence circles with counsellors and mentors.' },
-      { amount: 500, purpose: 'Starter kits for home-based livelihoods.' },
-      { amount: 1000, purpose: 'Certification course fees for one learner.' },
-      { amount: 5000, purpose: 'Micro-enterprise toolkit with machinery support.' },
-      { amount: 10000, purpose: 'Business incubator grant with market linkages.' }
-    ]
-  },
-  {
-    id: 'environment',
-    name: 'Environment & Animal Care',
-    summary: 'Protect green cover and ensure humane care for street animals.',
-    packages: [
-      { amount: 10, purpose: 'Saplings and soil nourishment for mini drives.' },
-      { amount: 50, purpose: 'Water bowls placed for community animals.' },
-      { amount: 100, purpose: 'First-aid kits for animal responders.' },
-      { amount: 200, purpose: 'Clean-up drive gear for volunteers.' },
-      { amount: 500, purpose: 'Vaccination and deworming for street dogs.' },
-      { amount: 1000, purpose: 'Vet visits and medicines for injured animals.' },
-      { amount: 5000, purpose: 'Micro-forest patch with community stewardship.' },
-      { amount: 10000, purpose: 'Animal care shelter upgrade with cooling zones.' }
-    ]
-  }
-];
+const sectors = programs.map((program) => ({
+  id: program.slug,
+  name: program.title,
+  summary: program.preview,
+  packages: program.donationPackages
+}));
 
 const formFields = [
   { name: 'fullName', label: 'Full Name', type: 'text', required: true },
