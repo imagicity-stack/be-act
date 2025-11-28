@@ -78,12 +78,20 @@ export default function InvolvePage() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-16 space-y-14">
       <SectionHeader
-        title="Give with purpose — every rupee finds its way to impact"
-        subtitle="Choose the cause closest to your heart, pick a package, or add a custom amount."
+        title="Fuel the learning journey"
+        subtitle="Every contribution keeps education and skills at the center, with support programs protecting each learner."
       />
 
       <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-8 items-start">
         <div className="space-y-6">
+          <div className="rounded-3xl bg-act-green text-cream p-5 shadow-card flex flex-col gap-2">
+            <p className="uppercase text-[11px] tracking-[0.2em] text-cream/70">Education-led promise</p>
+            <h3 className="font-heading text-xl">Start with Child Education or Youth Skills</h3>
+            <p className="text-cream/80">
+              Pick an education program first—every other initiative keeps these learning pathways steady through safety, health,
+              and community care.
+            </p>
+          </div>
           <div className="grid sm:grid-cols-2 gap-4">
             {sectors.map((sector) => {
               const isActive = activeSector.id === sector.id;
