@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Modal({ open, onClose, title, children }) {
+export default function Modal({ open, onClose, title, pretitle = 'Impact Spotlight', children }) {
   return (
     <AnimatePresence>
       {open && (
@@ -23,7 +23,7 @@ export default function Modal({ open, onClose, title, children }) {
           >
             <div className="flex items-start justify-between mb-4">
               <div>
-                <p className="text-act-green/70 text-xs uppercase tracking-widest">Program Spotlight</p>
+                <p className="text-act-green/70 text-xs uppercase tracking-widest">{pretitle}</p>
                 <h3 className="font-heading text-2xl text-act-green">{title}</h3>
               </div>
               <button onClick={onClose} className="text-act-green font-bold text-xl">✕</button>
