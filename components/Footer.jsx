@@ -4,7 +4,7 @@ import Mascot from './Mascot';
 export default function Footer() {
   return (
     <footer className="bg-act-green text-cream mt-16">
-      <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-4 gap-8">
+      <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-5 gap-8">
         <div className="space-y-3">
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 rounded-2xl bg-be-yellow text-act-green flex items-center justify-center font-heading text-xl shadow-card">
@@ -32,6 +32,23 @@ export default function Footer() {
             <Link href="/get-involved" className="block">Get Involved</Link>
             <Link href="/gallery" className="block">Gallery</Link>
             <Link href="/contact" className="block">Contact</Link>
+          </div>
+        </div>
+        <div>
+          <h4 className="font-heading text-lg mb-3">Legal</h4>
+          <div className="space-y-2 text-cream/80">
+            <Link href="/privacy-policy" className="block">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-and-conditions" className="block">
+              Terms and Conditions
+            </Link>
+            <Link href="/donation-refund-policy" className="block">
+              Donation and Refund Policy
+            </Link>
+            <Link href="/csr-partnership-policy" className="block">
+              CSR Partnership Policy
+            </Link>
           </div>
         </div>
         <div>
