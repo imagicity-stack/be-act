@@ -10,7 +10,7 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/programs', label: 'Programs' },
-  { href: '/get-involved', label: 'Get Involved' },
+  { href: '/involve', label: 'Involve' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/contact', label: 'Contact' }
 ];
@@ -49,10 +49,10 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="/get-involved"
+            href="/involve"
             className="ml-2 px-4 py-2 rounded-full bg-be-yellow text-act-green font-bold shadow-card hover:-translate-y-0.5 transition-transform"
           >
-            Join the Movement
+            INVOLVE
           </Link>
         </nav>
         <button
@@ -83,11 +83,11 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="/get-involved"
+              href="/involve"
               onClick={() => setOpen(false)}
               className="px-4 py-3 text-center rounded-xl bg-act-green text-cream font-bold"
             >
-              Join the Movement
+              INVOLVE
             </Link>
           </div>
         </motion.nav>
