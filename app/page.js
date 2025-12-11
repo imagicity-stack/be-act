@@ -8,12 +8,6 @@ import GalleryGrid from '../components/GalleryGrid';
 import Modal from '../components/Modal';
 import { programs, galleryItems } from '../lib/content';
 
-const heroStats = [
-  { label: 'Learners reached', value: '12,400+' },
-  { label: 'Cities served', value: '32' },
-  { label: 'Women-led circles', value: '18' }
-];
-
 const pillars = [
   {
     title: 'Education at the center',
@@ -34,68 +28,26 @@ const pillars = [
   }
 ];
 
-const promise = [
-  {
-    label: 'Transparent giving',
-    copy: 'Clear packages and reporting so every rupee follows the impact you choose.'
-  },
-  {
-    label: 'Human-first design',
-    copy: 'Soft hues, generous spacing, and language that keeps dignity at the core.'
-  },
-  {
-    label: 'Premium simplicity',
-    copy: 'Less noise, more clarity. A calm space to get involved in seconds.'
-  }
-];
-
 export default function HomePage() {
   const [openProgram, setOpenProgram] = useState(null);
 
   return (
     <div className="relative overflow-hidden">
-      <section className="relative min-h-[80vh] flex items-center">
+      <section className="relative min-h-[80vh] flex items-center justify-center text-center">
         <div className="absolute inset-0">
           <img src="/images/hero-abstract.svg" alt="Abstract illustration" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/70 to-act-green/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/60 to-ink/30" />
         </div>
-        <div className="relative max-w-6xl mx-auto px-4 py-20 w-full grid md:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
-          <div className="space-y-6 text-white">
-            <p className="uppercase tracking-[0.32em] text-sm text-white/70">Premium care for a public mission</p>
-            <h1 className="font-heading text-4xl md:text-5xl leading-tight max-w-2xl">
-              Education that feels premium, purposeful, and within reach for every community.
-            </h1>
-            <p className="text-lg md:text-xl text-white/80 max-w-2xl">
-              We design serene, future-forward programs—where learning, livelihood, and clean environments meet with quiet
-              confidence.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <CTAButton href="/involve" className="bg-white text-ink">Donate &amp; get involved</CTAButton>
-              <CTAButton href="#programs" variant="secondary" className="bg-white/10 text-white border-white/30">
-                Explore programs
-              </CTAButton>
-            </div>
-            <div className="grid sm:grid-cols-3 gap-4 pt-4">
-              {heroStats.map((stat) => (
-                <div key={stat.label} className="bg-white/10 border border-white/20 rounded-xl p-4 backdrop-blur">
-                  <p className="text-sm text-white/70">{stat.label}</p>
-                  <p className="text-2xl font-heading">{stat.value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="bg-white/90 rounded-2xl shadow-card p-6 backdrop-blur border border-white/40 space-y-4">
-            <p className="text-sm uppercase tracking-[0.3em] text-act-green">Our promise</p>
-            {promise.map((item) => (
-              <div key={item.label} className="p-4 rounded-xl bg-cream/70 border border-act-green/10">
-                <p className="text-xs font-semibold text-act-green/70 uppercase tracking-[0.25em]">{item.label}</p>
-                <p className="text-ink/80 mt-2 leading-relaxed">{item.copy}</p>
-              </div>
-            ))}
-            <div className="rounded-xl bg-act-green text-cream p-4">
-              <p className="text-sm font-semibold">Already with us?</p>
-              <p className="text-cream/70 text-sm">Log impact hours, download receipts, or connect with our team anytime.</p>
-            </div>
+        <div className="relative max-w-3xl mx-auto px-4 py-24 space-y-6 text-white">
+          <p className="uppercase tracking-[0.32em] text-sm text-white/70">Premium simplicity for public good</p>
+          <h1 className="font-heading text-4xl md:text-5xl leading-tight">
+            One clear promise across the skyline: education, dignity, and livelihoods for every neighbourhood.
+          </h1>
+          <div className="flex flex-wrap items-center justify-center gap-3 text-base md:text-lg">
+            <CTAButton href="/involve" className="bg-white text-ink">Donate now</CTAButton>
+            <CTAButton href="#programs" variant="secondary" className="bg-white/10 text-white border-white/30">
+              See where we work
+            </CTAButton>
           </div>
         </div>
       </section>
