@@ -76,18 +76,18 @@ export default function InvolvePage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 py-16 space-y-12">
       <SectionHeader
-        title="Fuel the learning journey"
-        subtitle="Every contribution keeps education and skills at the center, with support programs protecting each learner."
+        title="Donate with calm, confident design"
+        subtitle="A premium giving flow that keeps education and livelihoods in focus. Choose a program, pick a package, and submit a single serene form."
       />
 
-      <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-8 items-start">
+      <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
         <div className="space-y-6">
-          <div className="rounded-3xl bg-act-green text-cream p-5 shadow-card flex flex-col gap-2">
-            <p className="uppercase text-[11px] tracking-[0.2em] text-cream/70">Education-led promise</p>
-            <h3 className="font-heading text-xl">Start with Child Education or Youth Skills</h3>
-            <p className="text-cream/80">
+          <div className="rounded-2xl bg-ink text-cream p-6 shadow-card flex flex-col gap-3">
+            <p className="uppercase text-[11px] tracking-[0.3em] text-cream/60">Education-led promise</p>
+            <h3 className="font-heading text-xl">Begin with Child Education or Youth Skills</h3>
+            <p className="text-cream/80 leading-relaxed">
               Pick an education program first—every other initiative keeps these learning pathways steady through safety, health,
               and community care.
             </p>
@@ -99,33 +99,31 @@ export default function InvolvePage() {
                 <button
                   key={sector.id}
                   onClick={() => handleSectorSelect(sector)}
-                  className={`text-left rounded-3xl p-5 border shadow-card transition-all hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-act-green/60 ${
+                  className={`text-left rounded-2xl p-5 border shadow-card transition-all hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-act-green/60 ${
                     isActive
                       ? 'bg-act-green text-cream border-act-green'
-                      : 'bg-white text-act-green border-act-green/10 hover:border-act-green/40'
+                      : 'bg-white text-ink border-act-green/10 hover:border-act-green/40'
                   }`}
                 >
-                  <p className="uppercase text-xs tracking-[0.2em] opacity-70">Sector</p>
+                  <p className="uppercase text-xs tracking-[0.25em] opacity-70">Sector</p>
                   <h3 className="font-heading text-xl mb-2">{sector.name}</h3>
-                  <p className={`text-sm leading-relaxed ${isActive ? 'text-cream/80' : 'text-act-green/80'}`}>
-                    {sector.summary}
-                  </p>
+                  <p className={`text-sm leading-relaxed ${isActive ? 'text-cream/80' : 'text-ink/70'}`}>{sector.summary}</p>
                 </button>
               );
             })}
           </div>
 
-          <div className="bg-white rounded-3xl p-6 shadow-card border border-act-green/10 space-y-4">
+          <div className="bg-white rounded-2xl p-6 shadow-card border border-act-green/10 space-y-4">
             <div className="flex items-center justify-between gap-3 flex-wrap">
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-act-green/70">Selected sector</p>
-                <h3 className="font-heading text-2xl text-act-green">{activeSector.name}</h3>
+                <p className="text-xs uppercase tracking-[0.25em] text-act-green/70">Selected sector</p>
+                <h3 className="font-heading text-2xl text-ink">{activeSector.name}</h3>
               </div>
               <CTAButton href="#donate" className="bg-act-green text-cream">
                 Start a donation
               </CTAButton>
             </div>
-            <p className="text-act-green/80">
+            <p className="text-ink/70">
               Click a package to prefill your form. Custom amounts switch off preset packages to keep the selection clear.
             </p>
             <div className="grid sm:grid-cols-2 gap-3">
@@ -144,20 +142,18 @@ export default function InvolvePage() {
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-heading text-xl">₹{pack.amount.toLocaleString()}</span>
-                    {!isCustomSelected && selectedAmount === pack.amount && (
-                      <span className="text-sm font-semibold">Chosen</span>
-                    )}
+                    {!isCustomSelected && selectedAmount === pack.amount && <span className="text-sm font-semibold">Chosen</span>}
                   </div>
                   <p className="text-sm mt-1 leading-relaxed opacity-80">{pack.purpose}</p>
                 </button>
               ))}
-              <div className="rounded-2xl border border-dashed border-act-green/40 bg-be-yellow/30 p-4 shadow-card space-y-3">
+              <div className="rounded-2xl border border-dashed border-act-green/40 bg-be-yellow/20 p-4 shadow-card space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-act-green/70">Custom pledge</p>
-                    <p className="font-heading text-lg text-act-green">Write any amount</p>
+                    <p className="text-xs uppercase tracking-[0.25em] text-act-green/70">Custom pledge</p>
+                    <p className="font-heading text-lg text-ink">Write any amount</p>
                   </div>
-                  <label className="flex items-center gap-2 text-act-green font-semibold">
+                  <label className="flex items-center gap-2 text-ink font-semibold">
                     <input
                       type="radio"
                       name="amount-mode"
@@ -178,7 +174,7 @@ export default function InvolvePage() {
                     value={customAmount}
                     disabled={!isCustomSelected}
                     onChange={(e) => setCustomAmount(e.target.value)}
-                    className="flex-1 rounded-2xl border border-act-green/30 px-4 py-3 bg-white focus:outline-none focus:border-act-green focus:ring-2 focus:ring-act-green/30 disabled:bg-act-green/5 disabled:text-act-green/50"
+                    className="flex-1 rounded-2xl border border-act-green/30 px-4 py-3 bg-white focus:outline-none focus:border-act-green focus:ring-2 focus:ring-act-green/20 disabled:bg-act-green/5 disabled:text-act-green/50"
                   />
                 </div>
                 {isCustomSelected && (
@@ -195,7 +191,10 @@ export default function InvolvePage() {
           </div>
         </div>
 
-        <div id="donate" className="bg-white rounded-3xl p-6 shadow-card border border-act-green/10 space-y-5 sticky top-24">
+        <div
+          id="donate"
+          className="bg-white rounded-2xl p-6 shadow-card border border-act-green/10 space-y-5 sticky top-24"
+        >
           <div className="rounded-2xl bg-act-green text-cream p-5 space-y-2">
             <p className="uppercase text-[11px] tracking-[0.25em] text-cream/70">One simple form</p>
             <h3 className="font-heading text-2xl">Donate to {activeSector.name}</h3>
