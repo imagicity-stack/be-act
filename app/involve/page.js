@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import SectionHeader from '../../components/SectionHeader';
 import CTAButton from '../../components/CTAButton';
 import { programs } from '../../lib/content';
@@ -28,10 +28,10 @@ const formFields = [
 ];
 
 export default function InvolvePage() {
-  const [activeSector, setActiveSector] = useState(sectors[0]);
-  const [amountMode, setAmountMode] = useState('preset');
+  const [activeSectorId, setActiveSectorId] = useState(sectors[0].id);
   const [selectedAmount, setSelectedAmount] = useState(sectors[0].packages[0].amount);
   const [customAmount, setCustomAmount] = useState('');
+  const [frequency, setFrequency] = useState('One-time');
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -41,24 +41,22 @@ export default function InvolvePage() {
     note: ''
   });
 
+  const activeSector = useMemo(
+    () => sectors.find((sector) => sector.id === activeSectorId) ?? sectors[0],
+    [activeSectorId]
+  );
   const sectorPackages = useMemo(() => activeSector.packages, [activeSector]);
-  const isCustomSelected = amountMode === 'custom';
+  const isCustomSelected = selectedAmount === 'custom';
 
-  const handleSectorSelect = (sector) => {
-    setActiveSector(sector);
-    setAmountMode('preset');
-    setSelectedAmount(sector.packages[0].amount);
+  useEffect(() => {
+    if (!activeSector) return;
+    setSelectedAmount(activeSector.packages[0].amount);
     setCustomAmount('');
-  };
-
-  const handleCustomToggle = () => {
-    setAmountMode('custom');
-    setSelectedAmount('custom');
-  };
+  }, [activeSector]);
 
   const handlePresetSelect = (amount) => {
-    setAmountMode('preset');
     setSelectedAmount(amount);
+    setCustomAmount('');
   };
 
   const handleInputChange = (field, value) => {
@@ -76,98 +74,87 @@ export default function InvolvePage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16 space-y-14">
+    <div className="max-w-6xl mx-auto px-4 py-16 space-y-12">
       <SectionHeader
-        title="Fuel the learning journey"
-        subtitle="Every contribution keeps education and skills at the center, with support programs protecting each learner."
+        title="Donate with calm, confident design"
+        subtitle="Choose your cause from a dropdown, pick a ready package, or type a custom pledge. Everything stays light and simple."
       />
 
-      <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-8 items-start">
+      <div className="grid md:grid-cols-[1.05fr_0.95fr] gap-10 items-start">
         <div className="space-y-6">
-          <div className="rounded-3xl bg-act-green text-cream p-5 shadow-card flex flex-col gap-2">
-            <p className="uppercase text-[11px] tracking-[0.2em] text-cream/70">Education-led promise</p>
-            <h3 className="font-heading text-xl">Start with Child Education or Youth Skills</h3>
-            <p className="text-cream/80">
-              Pick an education program first—every other initiative keeps these learning pathways steady through safety, health,
-              and community care.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {sectors.map((sector) => {
-              const isActive = activeSector.id === sector.id;
-              return (
-                <button
-                  key={sector.id}
-                  onClick={() => handleSectorSelect(sector)}
-                  className={`text-left rounded-3xl p-5 border shadow-card transition-all hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-act-green/60 ${
-                    isActive
-                      ? 'bg-act-green text-cream border-act-green'
-                      : 'bg-white text-act-green border-act-green/10 hover:border-act-green/40'
-                  }`}
-                >
-                  <p className="uppercase text-xs tracking-[0.2em] opacity-70">Sector</p>
-                  <h3 className="font-heading text-xl mb-2">{sector.name}</h3>
-                  <p className={`text-sm leading-relaxed ${isActive ? 'text-cream/80' : 'text-act-green/80'}`}>
-                    {sector.summary}
-                  </p>
-                </button>
-              );
-            })}
+          <div className="rounded-2xl bg-ink text-cream p-6 shadow-card flex flex-col gap-4">
+            <div className="space-y-2">
+              <p className="uppercase text-[11px] tracking-[0.3em] text-cream/60">Pick your focus</p>
+              <h3 className="font-heading text-xl">Select a program from the dropdown</h3>
+              <p className="text-cream/80 leading-relaxed">
+                Child education, youth skills, or neighbourhood care—choose the cause and we will tailor your receipt and
+                updates.
+              </p>
+            </div>
+            <label className="text-sm font-semibold text-cream" htmlFor="sector-select">
+              Program
+            </label>
+            <select
+              id="sector-select"
+              value={activeSectorId}
+              onChange={(e) => setActiveSectorId(e.target.value)}
+              className="w-full rounded-2xl border border-cream/40 bg-cream/10 px-4 py-3 text-cream focus:outline-none focus:border-cream focus:ring-2 focus:ring-cream/30"
+            >
+              {sectors.map((sector) => (
+                <option key={sector.id} value={sector.id} className="text-ink">
+                  {sector.name}
+                </option>
+              ))}
+            </select>
+            <p className="text-sm text-cream/70 leading-relaxed">{activeSector.summary}</p>
           </div>
 
-          <div className="bg-white rounded-3xl p-6 shadow-card border border-act-green/10 space-y-4">
+          <div className="bg-white rounded-2xl p-6 shadow-card border border-act-green/10 space-y-4">
             <div className="flex items-center justify-between gap-3 flex-wrap">
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-act-green/70">Selected sector</p>
-                <h3 className="font-heading text-2xl text-act-green">{activeSector.name}</h3>
+                <p className="text-xs uppercase tracking-[0.25em] text-act-green/70">Ready-made packages</p>
+                <h3 className="font-heading text-2xl text-ink">{activeSector.name}</h3>
               </div>
               <CTAButton href="#donate" className="bg-act-green text-cream">
                 Start a donation
               </CTAButton>
             </div>
-            <p className="text-act-green/80">
-              Click a package to prefill your form. Custom amounts switch off preset packages to keep the selection clear.
-            </p>
+            <p className="text-ink/70">Tap a package or type a custom amount to keep the form tidy.</p>
             <div className="grid sm:grid-cols-2 gap-3">
               {sectorPackages.map((pack) => (
                 <button
                   key={pack.amount}
-                  disabled={isCustomSelected}
                   onClick={() => handlePresetSelect(pack.amount)}
                   className={`w-full text-left rounded-2xl border px-4 py-3 shadow-card transition ${
-                    isCustomSelected
-                      ? 'border-act-green/10 bg-act-green/5 text-act-green/50 cursor-not-allowed'
-                      : selectedAmount === pack.amount
-                        ? 'border-act-green bg-act-green text-cream'
-                        : 'border-act-green/15 hover:border-act-green/50 bg-cream'
+                    selectedAmount === pack.amount
+                      ? 'border-act-green bg-act-green text-cream'
+                      : 'border-act-green/15 hover:border-act-green/50 bg-cream text-ink'
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-heading text-xl">₹{pack.amount.toLocaleString()}</span>
-                    {!isCustomSelected && selectedAmount === pack.amount && (
-                      <span className="text-sm font-semibold">Chosen</span>
-                    )}
+                    {selectedAmount === pack.amount && <span className="text-sm font-semibold">Chosen</span>}
                   </div>
                   <p className="text-sm mt-1 leading-relaxed opacity-80">{pack.purpose}</p>
                 </button>
               ))}
-              <div className="rounded-2xl border border-dashed border-act-green/40 bg-be-yellow/30 p-4 shadow-card space-y-3">
+              <div className="rounded-2xl border border-dashed border-act-green/40 bg-be-yellow/20 p-4 shadow-card space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-act-green/70">Custom pledge</p>
-                    <p className="font-heading text-lg text-act-green">Write any amount</p>
+                    <p className="text-xs uppercase tracking-[0.25em] text-act-green/70">Custom pledge</p>
+                    <p className="font-heading text-lg text-ink">Write any amount</p>
                   </div>
-                  <label className="flex items-center gap-2 text-act-green font-semibold">
-                    <input
-                      type="radio"
-                      name="amount-mode"
-                      checked={isCustomSelected}
-                      onChange={handleCustomToggle}
-                      className="w-4 h-4 accent-act-green"
-                      aria-label="Select custom amount"
-                    />
-                    Custom
-                  </label>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedAmount('custom')}
+                    className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                      isCustomSelected
+                        ? 'bg-act-green text-cream'
+                        : 'bg-white text-act-green border border-act-green/40'
+                    }`}
+                  >
+                    {isCustomSelected ? 'Custom active' : 'Use custom'}
+                  </button>
                 </div>
                 <div className="flex gap-3 items-center">
                   <span className="text-act-green font-semibold">₹</span>
@@ -176,26 +163,23 @@ export default function InvolvePage() {
                     min="1"
                     placeholder="Enter custom amount"
                     value={customAmount}
-                    disabled={!isCustomSelected}
-                    onChange={(e) => setCustomAmount(e.target.value)}
-                    className="flex-1 rounded-2xl border border-act-green/30 px-4 py-3 bg-white focus:outline-none focus:border-act-green focus:ring-2 focus:ring-act-green/30 disabled:bg-act-green/5 disabled:text-act-green/50"
+                    onChange={(e) => {
+                      setCustomAmount(e.target.value);
+                      setSelectedAmount('custom');
+                    }}
+                    className="flex-1 rounded-2xl border border-act-green/30 px-4 py-3 bg-white focus:outline-none focus:border-act-green focus:ring-2 focus:ring-act-green/20"
                   />
                 </div>
-                {isCustomSelected && (
-                  <button
-                    type="button"
-                    onClick={() => handlePresetSelect(activeSector.packages[0].amount)}
-                    className="text-sm font-semibold text-act-green underline"
-                  >
-                    Use preset packages instead
-                  </button>
-                )}
+                <p className="text-xs text-act-green/80">Custom amounts overwrite any selected package.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div id="donate" className="bg-white rounded-3xl p-6 shadow-card border border-act-green/10 space-y-5 sticky top-24">
+        <div
+          id="donate"
+          className="bg-white rounded-2xl p-6 shadow-card border border-act-green/10 space-y-5 sticky top-24"
+        >
           <div className="rounded-2xl bg-act-green text-cream p-5 space-y-2">
             <p className="uppercase text-[11px] tracking-[0.25em] text-cream/70">One simple form</p>
             <h3 className="font-heading text-2xl">Donate to {activeSector.name}</h3>
@@ -216,6 +200,21 @@ export default function InvolvePage() {
                   readOnly
                   className="w-full px-4 py-3 rounded-2xl border border-act-green/20 bg-act-green/5 text-act-green font-semibold"
                 />
+              </div>
+              <div className="col-span-2">
+                <label className="text-sm font-semibold text-act-green" htmlFor="frequency">
+                  Frequency
+                </label>
+                <select
+                  id="frequency"
+                  value={frequency}
+                  onChange={(e) => setFrequency(e.target.value)}
+                  className="w-full px-4 py-3 rounded-2xl border border-act-green/20 bg-cream focus:outline-none focus:border-act-green focus:ring-2 focus:ring-act-green/30"
+                >
+                  <option>One-time</option>
+                  <option>Monthly</option>
+                  <option>Quarterly</option>
+                </select>
               </div>
               <div className="col-span-2">
                 <label className="text-sm font-semibold text-act-green" htmlFor="amount">

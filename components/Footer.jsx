@@ -3,39 +3,39 @@ import Mascot from './Mascot';
 
 export default function Footer() {
   return (
-    <footer className="bg-act-green text-cream mt-16">
-      <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-5 gap-8">
-        <div className="space-y-3">
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 rounded-2xl bg-be-yellow text-act-green flex items-center justify-center font-heading text-xl shadow-card">
+    <footer className="bg-ink text-cream mt-16">
+      <div className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-4 gap-10">
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-act-green text-cream flex items-center justify-center font-heading text-lg shadow-card">
               BE
             </div>
-            <div>
-              <p className="font-heading text-lg">BE ACT Foundation</p>
+            <div className="leading-tight">
+              <p className="font-heading text-lg tracking-tight">BE ACT Foundation</p>
               <p className="text-cream/70 text-sm">Building Action. Building Impact.</p>
             </div>
           </div>
-          <p className="text-cream/70 text-sm leading-relaxed">
-            A youthful movement empowering people to act, create, and contribute to brighter communities.
+          <p className="text-cream/70 text-sm leading-relaxed max-w-sm">
+            A calm, premium home for people who believe in equitable education, dignified livelihoods, and clean, thriving neighbourhoods.
           </p>
-          <div className="flex space-x-3 text-act-green">
-            <a className="w-9 h-9 rounded-full bg-be-yellow flex items-center justify-center font-bold">f</a>
-            <a className="w-9 h-9 rounded-full bg-be-yellow flex items-center justify-center font-bold">in</a>
-            <a className="w-9 h-9 rounded-full bg-be-yellow flex items-center justify-center font-bold">ig</a>
+          <div className="flex gap-2 text-ink">
+            <a className="w-9 h-9 rounded-lg bg-be-yellow flex items-center justify-center font-semibold">f</a>
+            <a className="w-9 h-9 rounded-lg bg-be-yellow flex items-center justify-center font-semibold">in</a>
+            <a className="w-9 h-9 rounded-lg bg-be-yellow flex items-center justify-center font-semibold">ig</a>
           </div>
         </div>
         <div>
-          <h4 className="font-heading text-lg mb-3">Quick Links</h4>
+          <h4 className="font-heading text-lg mb-4">Quick Links</h4>
           <div className="space-y-2 text-cream/80">
             <Link href="/about">About Us</Link>
             <Link href="/programs" className="block">Programs</Link>
-            <Link href="/involve" className="block">Involve</Link>
+            <Link href="/involve" className="block">Donate / Involve</Link>
             <Link href="/gallery" className="block">Gallery</Link>
             <Link href="/contact" className="block">Contact</Link>
           </div>
         </div>
         <div>
-          <h4 className="font-heading text-lg mb-3">Legal</h4>
+          <h4 className="font-heading text-lg mb-4">Legal</h4>
           <div className="space-y-2 text-cream/80">
             <Link href="/privacy-policy" className="block">
               Privacy Policy
@@ -51,28 +51,18 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-        <div>
-          <h4 className="font-heading text-lg mb-3">NGO Details</h4>
-          <p className="text-cream/70 text-sm leading-relaxed">
-            Registration No. : 00-000-0000
-            <br />
-            123 Impact Street, Inspire City
-            <br />
-            contact@beact.org
-          </p>
-        </div>
         <div className="relative">
           <Mascot className="absolute -top-6 right-0" />
           <h4 className="font-heading text-lg mb-3">Stay in the loop</h4>
           <p className="text-cream/70 text-sm mb-4">Sign up to know about new actions, programs, and community stories.</p>
-          <form className="flex">
+          <form className="flex bg-white/10 rounded-lg p-1">
             <input
               type="email"
               placeholder="Email address"
-              className="w-full px-4 py-3 rounded-l-2xl text-act-green focus:outline-none"
+              className="w-full px-3 py-2 rounded-md text-ink focus:outline-none"
               required
             />
-            <button type="submit" className="px-4 bg-be-yellow text-act-green font-bold rounded-r-2xl">
+            <button type="submit" className="px-4 bg-be-yellow text-ink font-semibold rounded-md ml-2">
               Go
             </button>
           </form>

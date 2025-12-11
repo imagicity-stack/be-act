@@ -7,14 +7,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cream: '#f5f0e4',
+        cream: '#f6f7f4',
         'be-yellow': '#f2c13d',
         'act-green': '#0d6b63',
-        'act-teal': '#0c8a7a'
+        'act-teal': '#0c8a7a',
+        ink: '#0f2d2a'
       },
       fontFamily: {
-        heading: ['var(--font-baloo)', 'cursive'],
-        body: ['var(--font-grotesk)', 'sans-serif']
+        heading: ['var(--font-display)', 'var(--font-body)', 'sans-serif'],
+        body: ['var(--font-body)', 'sans-serif']
       },
       boxShadow: {
         blob: '0 15px 45px rgba(13, 107, 99, 0.18)',

@@ -1,10 +1,10 @@
 import './globals.css';
-import { Baloo_2, Space_Grotesk } from 'next/font/google';
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-const baloo = Baloo_2({ subsets: ['latin'], weight: ['500', '600', '700'], variable: '--font-baloo' });
-const grotesk = Space_Grotesk({ subsets: ['latin'], display: 'swap', variable: '--font-grotesk' });
+const display = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-display' });
+const body = Inter({ subsets: ['latin'], variable: '--font-body' });
 
 export const metadata = {
   title: 'BE ACT Foundation | Building Action. Building Impact.',
@@ -28,7 +28,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${baloo.variable} ${grotesk.variable}`}>
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="bg-cream text-act-green font-body">
         <div className="min-h-screen flex flex-col">
           <Navbar />
